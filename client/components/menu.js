@@ -35,7 +35,6 @@ var Menu = React.createClass({
     },
 
 
-
 //Displays either the session options select (what category, what time length) or
 //the session controls (next image, previous image, stop, pause) depending
 //whether the "sessionOn" part of the redux state is true or false.
