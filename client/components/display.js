@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
 var actions = require('../actions');
+var SimpleSlider = require('./slider');
 
 var Display = React.createClass({
 	// componentDidMount: function() {
@@ -12,7 +13,7 @@ var Display = React.createClass({
     if (this.props.sessionOn == true) {
       return(
         <div>
-    			<img src={this.props.imgUrl} />
+    			<SimpleSlider />
     		</div>
       )
     }
