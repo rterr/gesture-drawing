@@ -15,9 +15,10 @@ var SimpleSlider = React.createClass({
       // slidesToShow: 1,
       // slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 3000
+      autoplaySpeed: this.props.timer
     }
     console.log('img', this.props.imgUrl);
+        console.log('timer', this.props.timer);
     return (<div>
       <Slider {...settings}>
   
@@ -36,7 +37,8 @@ var SimpleSlider = React.createClass({
 var mapStateToProps = function(state, props) {
     return {
       sessionOn: state.sessionOn,
-      imgUrl: state.imgUrl
+      imgUrl: state.imgUrl,
+      timer: state.timer
     };
 };
 

@@ -54,6 +54,8 @@ var togglePause = function(){
   }
 }
 
+
+
 var fetchImages = function() {
    return function(dispatch) {
        var url = 'http://localhost:8080/images';

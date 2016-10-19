@@ -12,7 +12,7 @@ var Menu = React.createClass({
     getInitialState: function() {
       return {
         category: "hands",
-        timer: 30
+        timer: 30000
       };
     },
 
@@ -92,19 +92,19 @@ var Menu = React.createClass({
               <span>For how long should each image stay?</span>
               <div className="timer">
                 <label>
-                <input type="radio" name="timer" value="30" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="30000" onChange={this.timerChanged} />
                 30 Seconds
                 </label>
                 </div>
                 <div className="radio">
                 <label>
-                <input type="radio" name="timer" value="60" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="60000" onChange={this.timerChanged} />
                 1 Minute
                 </label>
                 </div>
                 <div className="radio">
                 <label>
-                <input type="radio" name="timer" value="120" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="1200000" onChange={this.timerChanged} />
                 2 Minutes
                 </label>
                 </div>
