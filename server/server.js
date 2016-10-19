@@ -7,7 +7,6 @@ var app = express();
 var images = require('./images');
 
 
-
 app.use('/', express.static('build'));
 
 app.get('/images', function(req, res) {

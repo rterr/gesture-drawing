@@ -8,7 +8,7 @@
     "mkdir": "mkdir -p build",
     "clean": "rm -rf build",
     "assets": "cp -R images/ build/images/",
-    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:js && npm run assets",
+    "build": "npm run clean && npm run mkdir && npm run assets && npm run build:html && npm run build:js",
     "serve": "lite-server",
     "watch": "npm run watch:html & npm run watch:js",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",

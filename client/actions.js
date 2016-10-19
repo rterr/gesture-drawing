@@ -29,9 +29,30 @@ var startSession = function(category, timer) {
 var END_SESSION = 'END_SESSION';
 var endSession = function() {
     return {
-        type: END_SESSION,
+        type: END_SESSION
     };
 };
+
+var NEXT_IMAGE = 'NEXT_IMAGE';
+var nextImage = function(){
+  return {
+    type: NEXT_IMAGE
+  }
+}
+
+var PREVIOUS_IMAGE = 'PREVIOUS_IMAGE';
+var previousImage = function() {
+  return {
+    type: PREVIOUS_IMAGE
+  }
+}
+
+var TOGGLE_PAUSE = 'TOGGLE_PAUSE';
+var togglePause = function(){
+  return {
+    type: TOGGLE_PAUSE
+  }
+}
 
 var fetchImages = function() {
    return function(dispatch) {
@@ -69,5 +90,11 @@ exports.START_SESSION = START_SESSION;
 exports.startSession = startSession;
 exports.END_SESSION = END_SESSION;
 exports.endSession = endSession;
+exports.NEXT_IMAGE = NEXT_IMAGE;
+exports.nextImage = nextImage;
+exports.PREVIOUS_IMAGE = PREVIOUS_IMAGE;
+exports.previousImage = previousImage;
+exports.TOGGLE_PAUSE = TOGGLE_PAUSE;
+exports.togglePause = exports.togglePause;
 
 exports.fetchImages = fetchImages;

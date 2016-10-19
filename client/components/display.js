@@ -4,9 +4,9 @@ var connect = require('react-redux').connect;
 var actions = require('../actions');
 
 var Display = React.createClass({
-	componentDidMount: function() {
-	this.props.dispatch(actions.fetchImages());
-  },
+	// componentDidMount: function() {
+	// this.props.dispatch(actions.fetchImages());
+  // },
 
 	render: function() {
     if (this.props.sessionOn == true) {
@@ -18,7 +18,7 @@ var Display = React.createClass({
     }
     return(
       <div>
-        <img src={this.props.imgUrl} />
+        Select your options!
       </div>
     )
   }
