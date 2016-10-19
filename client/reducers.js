@@ -49,6 +49,10 @@ var reducer = function(state, action){
     console.log("next_image action")
     console.log(imgCounter)
     console.log(sessionImages.length)
+    //added condition to reset imgCounter so the images keep scrolling// Only showing 4/5 images*** (need more fix)
+    if (imgCounter >= 4) {
+      imgCounter = 0
+    }
     if (imgCounter < sessionImages.length - 1) {
       imgCounter++;
     }

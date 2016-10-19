@@ -7,6 +7,8 @@ var actions = require('../actions');
  //        var timer = 30;
 
 var Menu = React.createClass({
+
+  //added initialState + Changed methods to target users selections
     getInitialState: function() {
       return {
         category: "hands",
