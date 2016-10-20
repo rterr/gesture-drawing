@@ -15,6 +15,9 @@ var Menu = React.createClass({
         timer: 30000
       };
     },
+    componentWillUpdate: function() {
+        this.props.dispatch(actions.fetchImages());
+    },
 
     categoryChanged: function(e) {
       this.setState({
@@ -38,6 +41,7 @@ var Menu = React.createClass({
         console.log("start session");
         this.props.dispatch(actions.startSession(this.state.category, this.state.timer));
         this.props.dispatch(actions.fetchImages());
+
     },
 
     endSession: function(event) {
@@ -66,6 +70,7 @@ var Menu = React.createClass({
 //whether the "sessionOn" part of the redux state is true or false.
 
     panel: function(e) {
+       console.log('menu', this.props.nextTime);
       if (this.props.sessionOn == false) {
                 return (
             <form name="settings" onSubmit={this.startSession}>
@@ -104,7 +109,7 @@ var Menu = React.createClass({
                 </div>
                 <div className="radio">
                 <label>
-                <input type="radio" name="timer" value="1200000" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="120000" onChange={this.timerChanged} />
                 2 Minutes
                 </label>
                 </div>
@@ -120,6 +125,7 @@ var Menu = React.createClass({
           <input type="button" name="pause" value="Pause Timer"/>
           <input type="button" name="next" value="Next Image" onClick={this.nextImage} />
           <input type="button" name="end" value="End Session" onClick={this.endSession} />
+          <div> countdown: {this.props.nextTime} </div>
           </div>
         )
       }
@@ -129,6 +135,7 @@ var Menu = React.createClass({
 
     render: function() {
         return (
+
             <div>{this.panel()}</div>
         );
     }
@@ -138,7 +145,8 @@ var Menu = React.createClass({
 
 var mapStateToProps = function(state) {
     return {
-      sessionOn: state.sessionOn
+      sessionOn: state.sessionOn,
+      nextTime: state.nextTime
     };
 };
 

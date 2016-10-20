@@ -13,7 +13,7 @@ var Display = React.createClass({
     if (this.props.sessionOn == true) {
       return(
         <div>
-    			<SimpleSlider />
+    			<img src={this.props.imgUrl} />
     		</div>
       )
     }
@@ -28,7 +28,8 @@ var Display = React.createClass({
 var mapStateToProps = function(state, props) {
     return {
       sessionOn: state.sessionOn,
-      imgUrl: state.imgUrl
+      imgUrl: state.imgUrl,
+      nextTime: state.nextTime
     };
 };
 
