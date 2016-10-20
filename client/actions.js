@@ -54,14 +54,6 @@ var togglePause = function(){
   }
 }
 
-var TEST_TIME = 'TEST_TIME';
-var test = function(){
-  return {
-    type: TEST_TIME
-  }
-}
-
-
 
 var fetchImages = function() {
    return function(dispatch) {
@@ -104,8 +96,6 @@ exports.nextImage = nextImage;
 exports.PREVIOUS_IMAGE = PREVIOUS_IMAGE;
 exports.previousImage = previousImage;
 exports.TOGGLE_PAUSE = TOGGLE_PAUSE;
-exports.TEST_TIME = TEST_TIME;
-exports.test = test;
 exports.togglePause = exports.togglePause;
 
 exports.fetchImages = fetchImages;

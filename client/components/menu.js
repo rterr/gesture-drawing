@@ -11,14 +11,11 @@ var endTime;
 
 var Menu = React.createClass({
   
- 
-
-
   //added initialState + Changed methods to target users selections
     getInitialState: function() {
       return {
         category: "hands",
-        timer: 30000
+        timer: 30
       };
     },
 
@@ -48,7 +45,7 @@ var Menu = React.createClass({
         this.props.dispatch(actions.startSession(this.state.category, this.state.timer));
         this.props.dispatch(actions.fetchImages());
 
-        var countdown = this.state.timer / 1000;
+        // var countdown = this.state.timer / 1000;
         //we create a that variable  set to this (this is auto set to window) to fix scoping issue of this.props.dispatch showing undefined in the setTimer function.
         var that = this;
 
@@ -76,7 +73,7 @@ var Menu = React.createClass({
     }, 1000);
      // console.log('test', test);
 }
-    startTimer(countdown);
+    startTimer(this.state.timer);
     },
 
     endSession: function(event) {
@@ -132,19 +129,19 @@ var Menu = React.createClass({
               <span>For how long should each image stay?</span>
               <div className="timer">
                 <label>
-                <input type="radio" name="timer" value="30000" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="30" onChange={this.timerChanged} />
                 30 Seconds
                 </label>
                 </div>
                 <div className="radio">
                 <label>
-                <input type="radio" name="timer" value="60000" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="60" onChange={this.timerChanged} />
                 1 Minute
                 </label>
                 </div>
                 <div className="radio">
                 <label>
-                <input type="radio" name="timer" value="120000" onChange={this.timerChanged} />
+                <input type="radio" name="timer" value="120" onChange={this.timerChanged} />
                 2 Minutes
                 </label>
                 </div>
@@ -160,7 +157,6 @@ var Menu = React.createClass({
           <input type="button" name="pause" value="Pause Timer"/>
           <input type="button" name="next" value="Next Image" onClick={this.nextImage} />
           <input type="button" name="end" value="End Session" onClick={this.endSession} />
-          <div> countdown: {this.props.nextTime} </div>
           </div>
         )
       }

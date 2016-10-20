@@ -4,34 +4,34 @@ var initialState = {
   sessionOn: false,
   category: null,
   timer: null,
-  nextTime: null,
   imgUrl: null
 }
 
 //sessionImages = array of IDs of images to be used in the session
 var sessionImages = [];
 var imgCounter = 0;
-var endTime;
 
 
-var startTimer = function(duration) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+// var endTime;
+// var startTimer = function(duration) {
+//     var timer = duration, minutes, seconds;
+//     setInterval(function () {
+//         minutes = parseInt(timer / 60, 10)
+//         seconds = parseInt(timer % 60, 10);
 
-        endTime = minutes + ":" + seconds;
-         console.log('endTime', endTime);
-        if (--timer < 0) {
-            imgCounter++
-            timer = duration;
-        }
-        console.log('imgCounter in timer', imgCounter);
-    }, 1000);
-}
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
+
+//         endTime = minutes + ":" + seconds;
+//          console.log('endTime', endTime);
+//         if (--timer < 0) {
+//             imgCounter++
+//             timer = duration;
+//         }
+//         console.log('imgCounter in timer', imgCounter);
+//     }, 1000);
+// }
 
 var reducer = function(state, action){
   state = state || initialState;
@@ -72,16 +72,6 @@ var reducer = function(state, action){
   else if (action.type == actions.END_SESSION){
     console.log("end_session action")
     state = Object.assign({}, state, initialState);
-  }
-
-//test
-else if (action.type == actions.TEST_TIME){
-    console.log("test action")
-    console.log('endTime after function', endTime);
-    state = Object.assign({}, state, {
-      nextTime: endTime
-    });
-    return state
   }
 
   else if (action.type == actions.NEXT_IMAGE) {
