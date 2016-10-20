@@ -8,7 +8,8 @@ var actions = require('../actions');
 
 //endTime shows timer in console + can be used to create countdown display***
 var endTime;
-
+//added timerId variable to have access to turn off the timer interval from looping forever
+var timerId = 0;
 var Menu = React.createClass({
   
   //added initialState + Changed methods to target users selections
@@ -51,7 +52,7 @@ var Menu = React.createClass({
 
         function startTimer(duration) {
         var timer = duration, minutes, seconds;
-        setInterval(function () {
+        timerId = setInterval(function () {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
 
@@ -80,6 +81,8 @@ var Menu = React.createClass({
         event.preventDefault();
         console.log("end session")
         this.props.dispatch(actions.endSession());
+        //clearInterval stops the original countdown timer when ending the session
+        clearInterval(timerId);
     },
 
     nextImage: function(event) {
