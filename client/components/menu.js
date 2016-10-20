@@ -10,6 +10,10 @@ var actions = require('../actions');
 var endTime;
 //added timerId variable to have access to turn off the timer interval from looping forever
 var timerId = 0;
+
+var isPaused = false;
+
+
 var Menu = React.createClass({
   
   //added initialState + Changed methods to target users selections
@@ -62,6 +66,10 @@ var Menu = React.createClass({
         endTime = minutes + ":" + seconds;
          console.log('endTime', endTime);
 
+        if(isPaused) {
+        timer++;
+        }
+
         if (--timer < 0) {
       console.log('that + fetch', that, that.props);
          that.props.dispatch(actions.nextImage());
@@ -97,6 +105,18 @@ var Menu = React.createClass({
         console.log("previous image")
         this.props.dispatch(actions.previousImage());
         this.props.dispatch(actions.fetchImages());
+    },
+//added pause and resume methods
+    pauseTimer: function(event) {
+        event.preventDefault();
+        console.log('paused timer');
+        isPaused = true;
+    },
+
+    resumeTimer: function(event) {
+        event.preventDefault();
+        console.log('resumed timer');
+        isPaused = false;
     },
 
 
@@ -157,7 +177,8 @@ var Menu = React.createClass({
         return (
           <div className="controls">
           <input type="button" name="previous" value="Previous Image" onClick={this.previousImage} />
-          <input type="button" name="pause" value="Pause Timer"/>
+          <input type="button" name="pause" value="Pause Timer" onClick={this.pauseTimer} />
+          <input type="button" name="resume" value="Resume Timer" onClick={this.resumeTimer} />
           <input type="button" name="next" value="Next Image" onClick={this.nextImage} />
           <input type="button" name="end" value="End Session" onClick={this.endSession} />
           </div>
