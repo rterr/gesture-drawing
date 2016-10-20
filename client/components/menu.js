@@ -6,7 +6,13 @@ var actions = require('../actions');
  // var category = "hands";
  //        var timer = 30;
 
+//endTime shows timer in console + can be used to create countdown display***
+var endTime;
+
 var Menu = React.createClass({
+  
+ 
+
 
   //added initialState + Changed methods to target users selections
     getInitialState: function() {
@@ -14,9 +20,6 @@ var Menu = React.createClass({
         category: "hands",
         timer: 30000
       };
-    },
-    componentWillUpdate: function() {
-        this.props.dispatch(actions.fetchImages());
     },
 
     categoryChanged: function(e) {
@@ -34,14 +37,46 @@ var Menu = React.createClass({
     },
 
     startSession: function(event) {
+      console.log('actions menu', this.props);
         event.preventDefault();
         //Temporary parameter declaration until I figure out those radio buttons
         // var category = "hands";
         // var timer = 30;
         console.log("start session");
+
+        
         this.props.dispatch(actions.startSession(this.state.category, this.state.timer));
         this.props.dispatch(actions.fetchImages());
 
+        var countdown = this.state.timer / 1000;
+        //we create a that variable  set to this (this is auto set to window) to fix scoping issue of this.props.dispatch showing undefined in the setTimer function.
+        var that = this;
+
+        function startTimer(duration) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        endTime = minutes + ":" + seconds;
+         console.log('endTime', endTime);
+
+        if (--timer < 0) {
+      console.log('that + fetch', that, that.props);
+         that.props.dispatch(actions.nextImage());
+         that.props.dispatch(actions.fetchImages());
+ 
+            timer = duration;
+            
+        }
+   
+    }, 1000);
+     // console.log('test', test);
+}
+    startTimer(countdown);
     },
 
     endSession: function(event) {
@@ -70,7 +105,7 @@ var Menu = React.createClass({
 //whether the "sessionOn" part of the redux state is true or false.
 
     panel: function(e) {
-       console.log('menu', this.props.nextTime);
+  
       if (this.props.sessionOn == false) {
                 return (
             <form name="settings" onSubmit={this.startSession}>
@@ -134,6 +169,7 @@ var Menu = React.createClass({
 
 
     render: function() {
+
         return (
 
             <div>{this.panel()}</div>
@@ -146,7 +182,7 @@ var Menu = React.createClass({
 var mapStateToProps = function(state) {
     return {
       sessionOn: state.sessionOn,
-      nextTime: state.nextTime
+      imgUrl: state.imgUrl
     };
 };
 

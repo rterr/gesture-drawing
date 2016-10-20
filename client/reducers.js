@@ -48,8 +48,8 @@ var reducer = function(state, action){
   else if (action.type == actions.START_SESSION){
     //start timer countdown
     var countdown = action.timer / 1000;
-    console.log('reducer countdown', countdown);
-    startTimer(countdown);
+    // console.log('reducer countdown', countdown);
+    // startTimer(countdown);
 
     console.log('start_session action');
     if (action.category == "hands"){
