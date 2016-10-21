@@ -12,27 +12,6 @@ var sessionImages = [];
 var imgCounter = 0;
 
 
-
-// var endTime;
-// var startTimer = function(duration) {
-//     var timer = duration, minutes, seconds;
-//     setInterval(function () {
-//         minutes = parseInt(timer / 60, 10)
-//         seconds = parseInt(timer % 60, 10);
-
-//         minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//         endTime = minutes + ":" + seconds;
-//          console.log('endTime', endTime);
-//         if (--timer < 0) {
-//             imgCounter++
-//             timer = duration;
-//         }
-//         console.log('imgCounter in timer', imgCounter);
-//     }, 1000);
-// }
-
 var reducer = function(state, action){
   state = state || initialState;
   if(action.type == actions.FETCH_IMAGES_SUCCESS){
@@ -46,11 +25,6 @@ var reducer = function(state, action){
     console.log(action.error);
   }
   else if (action.type == actions.START_SESSION){
-    //start timer countdown
-    var countdown = action.timer / 1000;
-    // console.log('reducer countdown', countdown);
-    // startTimer(countdown);
-
     console.log('start_session action');
     if (action.category == "hands"){
       sessionImages = [0, 1, 2, 3, 4]
@@ -61,12 +35,13 @@ var reducer = function(state, action){
     if (action.category == "torsos"){
       sessionImages = [10, 11, 12, 13, 14]
     }
+    console.log('test', imgCounter);
     state = Object.assign({}, state, {
         category: action.category,
         timer: action.timer,
 				sessionOn: true
       });
-         // console.log('endTime after function', endTime);
+
     return state;
   }
   else if (action.type == actions.END_SESSION){
@@ -78,13 +53,14 @@ var reducer = function(state, action){
     console.log("next_image action")
     console.log(imgCounter)
     console.log(sessionImages.length)
-     // console.log('endTime after function', endTime);
 
 
-    //added condition to reset imgCounter so the images keep scrolling// Only showing 4/5 images*** (need more fix)
+    //added condition to reset imgCounter so the images keep scrolling
     if (imgCounter >= 4) {
-      imgCounter = 0
+      //reset counter / set to -1 so all 5 images show when rotating
+      imgCounter = -1;
     }
+
     if (imgCounter < sessionImages.length - 1) {
       imgCounter++;
     }
