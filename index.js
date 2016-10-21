@@ -12,6 +12,7 @@ var Menu = require('./client/components/menu');
 var App = function() {
     return (
         <div>
+        <h1>Gesture Drawing Tool</h1>
           <Menu />
           <Display />
         </div>

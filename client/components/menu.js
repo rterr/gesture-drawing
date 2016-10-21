@@ -15,7 +15,7 @@ var isPaused = false;
 
 
 var Menu = React.createClass({
-  
+
   //added initialState + Changed methods to target users selections
     getInitialState: function() {
       return {
@@ -46,7 +46,7 @@ var Menu = React.createClass({
         // var timer = 30;
         console.log("start session");
 
-        
+
         this.props.dispatch(actions.startSession(this.state.category, this.state.timer));
         this.props.dispatch(actions.fetchImages());
 
@@ -74,11 +74,11 @@ var Menu = React.createClass({
       console.log('that + fetch', that, that.props);
          that.props.dispatch(actions.nextImage());
          that.props.dispatch(actions.fetchImages());
- 
+
             timer = duration;
-            
+
         }
-   
+
     }, 1000);
      // console.log('test', test);
 }
@@ -125,12 +125,14 @@ var Menu = React.createClass({
 //whether the "sessionOn" part of the redux state is true or false.
 
     panel: function(e) {
-  
+
       if (this.props.sessionOn == false) {
                 return (
+          <div className="menu">
             <form name="settings" onSubmit={this.startSession}>
-            <span>What would you like to draw?</span>
             <div className="category">
+            <p>What would you like to draw?</p>
+              <div className="radio">
               <label>
               <input type="radio" value="hands" name="category" ref="category" onChange={this.categoryChanged} />
               Hands
@@ -148,9 +150,11 @@ var Menu = React.createClass({
               Torsos
               </label>
               </div>
+            </div>
 
-              <span>For how long should each image stay?</span>
               <div className="timer">
+              <p>For how long should each image stay?</p>
+                <div className="radio">
                 <label>
                 <input type="radio" name="timer" value="30" onChange={this.timerChanged} />
                 30 Seconds
@@ -168,18 +172,22 @@ var Menu = React.createClass({
                 2 Minutes
                 </label>
                 </div>
-                <input type="submit" id="inputButton" name="submit" value="Begin"/>
+                </div>
+              <div className="submit-button">
+              <input type="submit" id="inputButton" name="submit" value="Begin"/>
+              </div>
             </form>
+            </div>
         );
 
       }
       else {
         return (
           <div className="controls">
-          <input type="button" name="previous" value="Previous Image" onClick={this.previousImage} />
-          <input type="button" name="pause" value="Pause Timer" onClick={this.pauseTimer} />
-          <input type="button" name="resume" value="Resume Timer" onClick={this.resumeTimer} />
-          <input type="button" name="next" value="Next Image" onClick={this.nextImage} />
+          <input type="button" name="previous" value="Previous Image" onClick={this.previousImage} />&nbsp;
+          <input type="button" name="pause" value="Pause Timer" onClick={this.pauseTimer} />&nbsp;
+          <input type="button" name="resume" value="Resume Timer" onClick={this.resumeTimer} />&nbsp;
+          <input type="button" name="next" value="Next Image" onClick={this.nextImage} />&nbsp;
           <input type="button" name="end" value="End Session" onClick={this.endSession} />
           </div>
         )
