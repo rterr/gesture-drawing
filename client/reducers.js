@@ -47,8 +47,6 @@ var reducer = function(state, action){
   }
   else if (action.type == actions.NEXT_IMAGE) {
     console.log("next_image action")
-    console.log(imgCounter)
-    console.log(sessionImages.length)
     if (imgCounter < sessionImages.length - 1) {
       imgCounter++;
     }
