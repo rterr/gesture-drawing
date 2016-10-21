@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
 var actions = require('../actions');
+var SimpleSlider = require('./slider');
 
 var Display = React.createClass({
 	// componentDidMount: function() {
@@ -27,7 +28,8 @@ var Display = React.createClass({
 var mapStateToProps = function(state, props) {
     return {
       sessionOn: state.sessionOn,
-      imgUrl: state.imgUrl
+      imgUrl: state.imgUrl,
+      nextTime: state.nextTime
     };
 };
 

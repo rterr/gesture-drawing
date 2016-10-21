@@ -11,10 +11,11 @@ var initialState = {
 var sessionImages = [];
 var imgCounter = 0;
 
+
 var reducer = function(state, action){
   state = state || initialState;
   if(action.type == actions.FETCH_IMAGES_SUCCESS){
-    console.log('fetch_image_success action');
+    console.log('fetch_image_success action', action.images);
     state = Object.assign({}, state, {
         imgUrl: action.images[sessionImages[imgCounter]].url
       });
@@ -34,22 +35,35 @@ var reducer = function(state, action){
     if (action.category == "torsos"){
       sessionImages = [10, 11, 12, 13, 14]
     }
+    console.log('test', imgCounter);
     state = Object.assign({}, state, {
         category: action.category,
         timer: action.timer,
 				sessionOn: true
       });
+
     return state;
   }
   else if (action.type == actions.END_SESSION){
     console.log("end_session action")
     state = Object.assign({}, state, initialState);
   }
+
   else if (action.type == actions.NEXT_IMAGE) {
     console.log("next_image action")
+    console.log(imgCounter)
+    console.log(sessionImages.length)
+
+
+    //added condition to reset imgCounter so the images keep scrolling
+    if (imgCounter >= 4) {
+      //reset counter / set to -1 so all 5 images show when rotating
+      imgCounter = -1;
+    }
     if (imgCounter < sessionImages.length - 1) {
       imgCounter++;
     }
+
   }
   else if (action.type == actions.PREVIOUS_IMAGE) {
     console.log("previous_image action")
@@ -60,6 +74,7 @@ var reducer = function(state, action){
   else if (action.type == actions.TOGGLE_PAUSE) {
 
   }
+
   return state;
 }
 
