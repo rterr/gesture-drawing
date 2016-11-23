@@ -9,7 +9,7 @@
     "clean": "rm -rf build",
     "assets": "cp -R images/ build/images/",
     "build": "npm run clean && npm run mkdir && npm run assets && npm run build:html && npm run build:js && npm run build:css",
-    "serve": "lite-server",
+    "serve": "node ./server/server",
     "watch": "npm run watch:html & npm run watch:js & npm run watch:css",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "build:html": "npm run clean:html && cp index.html build/",
