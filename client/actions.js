@@ -57,7 +57,7 @@ var togglePause = function(){
 
 var fetchImages = function() {
    return function(dispatch) {
-       var url = 'http://localhost:8080/images';
+       var url = '/images';
 
        return fetch(url).then(function(response) {
            if (response.status < 200 || response.status >= 300) {

@@ -55,9 +55,8 @@ var reducer = function(state, action){
     console.log(sessionImages.length)
 
 
-    //added condition to reset imgCounter so the images keep scrolling
+    //reset imgCounter so the images keep scrolling
     if (imgCounter >= 4) {
-      //reset counter / set to -1 so all 5 images show when rotating
       imgCounter = -1;
     }
     if (imgCounter < sessionImages.length - 1) {
@@ -72,7 +71,7 @@ var reducer = function(state, action){
     }
   }
   else if (action.type == actions.TOGGLE_PAUSE) {
-
+    return state;
   }
 
   return state;

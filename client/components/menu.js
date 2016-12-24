@@ -3,12 +3,9 @@ var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
 var actions = require('../actions');
 
- // var category = "hands";
- //        var timer = 30;
 
-//endTime shows timer in console + can be used to create countdown display***
+//endTime shows timer in console + can be used to create countdown display*
 var endTime;
-//added timerId variable to have access to turn off the timer interval from looping forever
 var timerId = 0;
 
 var isPaused = false;
@@ -16,7 +13,6 @@ var isPaused = false;
 
 var Menu = React.createClass({
 
-  //added initialState + Changed methods to target users selections
     getInitialState: function() {
       return {
         category: "hands",
@@ -41,17 +37,12 @@ var Menu = React.createClass({
     startSession: function(event) {
       console.log('actions menu', this.props);
         event.preventDefault();
-        //Temporary parameter declaration until I figure out those radio buttons
-        // var category = "hands";
-        // var timer = 30;
         console.log("start session");
 
 
         this.props.dispatch(actions.startSession(this.state.category, this.state.timer));
         this.props.dispatch(actions.fetchImages());
 
-        // var countdown = this.state.timer / 1000;
-        //we create a that variable  set to this (this is auto set to window) to fix scoping issue of this.props.dispatch showing undefined in the setTimer function.
         var that = this;
 
         function startTimer(duration) {
@@ -80,7 +71,6 @@ var Menu = React.createClass({
         }
 
     }, 1000);
-     // console.log('test', test);
 }
     startTimer(this.state.timer);
     },
@@ -89,7 +79,6 @@ var Menu = React.createClass({
         event.preventDefault();
         console.log("end session")
         this.props.dispatch(actions.endSession());
-        //clearInterval stops the original countdown timer when ending the session
         clearInterval(timerId);
     },
 
@@ -106,7 +95,7 @@ var Menu = React.createClass({
         this.props.dispatch(actions.previousImage());
         this.props.dispatch(actions.fetchImages());
     },
-//added pause and resume methods
+
     pauseTimer: function(event) {
         event.preventDefault();
         console.log('paused timer');
@@ -118,11 +107,6 @@ var Menu = React.createClass({
         console.log('resumed timer');
         isPaused = false;
     },
-
-
-//Displays either the session options select (what category, what time length) or
-//the session controls (next image, previous image, stop, pause) depending
-//whether the "sessionOn" part of the redux state is true or false.
 
     panel: function(e) {
 
@@ -193,8 +177,6 @@ var Menu = React.createClass({
         )
       }
     },
-
-
 
     render: function() {
 
