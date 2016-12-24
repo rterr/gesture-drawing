@@ -13,8 +13,10 @@ var App = function() {
     return (
         <div>
         <h1>Gesture Drawing Tool</h1>
+        <div id="content">
           <Menu />
           <Display />
+        </div>
         </div>
     );
 };

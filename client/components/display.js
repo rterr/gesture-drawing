@@ -14,6 +14,7 @@ var Display = React.createClass({
     }
     return(
       <div className="display">
+			All images are placeholders; sketches by George Bridgman.
       </div>
     )
   }

@@ -3,22 +3,36 @@
 
 body{
   background-color:slategrey;
-  font-family:sans-serif;
+  font-family:'Open Sans', sans-serif;
   margin:2em;
 }
 
-h1 {
-  font-family:'Abril Fatface', sans-serif;
-  color:steelblue;
-}
 
 #app {
   @include outer-container;
   width: 50em;
   text-align:center;
+}
+
+#app h1 {
+  color:gainsboro;
+  border:8px solid gainsboro;
+  padding:0.5em;
+  text-transform:uppercase;
+  letter-spacing:0.25em;
+}
+
+#content {
+  @include span-columns(12);
+  height:100%;
   background-color:gainsboro;
-  border-radius: 2em;
   padding:1em;
+}
+
+.display {
+  @include span-columns(12);
+  font-size:0.75em;
+  font-style:italic;
 }
 
 .category, .timer {
@@ -32,7 +46,7 @@ h1 {
 
 .submit-button {
   @include span-columns(7);
-  margin-top:1em;
+  margin: 1em 0em;
 }
 
 .menu {
@@ -48,7 +62,9 @@ input[type=submit], input[type=button] {
   padding:0.75em;
   color:white;
   font-size:1em;
+  letter-spacing:0.2em;
+  font-family:'Open Sans Condensed', sans-serif;
   border:none;
-  border-radius:0.5em;
-  background-color:steelblue;
+  text-transform:uppercase;
+  background-color:slategrey;
 }
