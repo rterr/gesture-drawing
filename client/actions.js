@@ -96,6 +96,6 @@ exports.nextImage = nextImage;
 exports.PREVIOUS_IMAGE = PREVIOUS_IMAGE;
 exports.previousImage = previousImage;
 exports.TOGGLE_PAUSE = TOGGLE_PAUSE;
-exports.togglePause = exports.togglePause;
+exports.togglePause = togglePause;
 
 exports.fetchImages = fetchImages;

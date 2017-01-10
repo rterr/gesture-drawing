@@ -98,12 +98,14 @@ var Menu = React.createClass({
 
     pauseTimer: function(event) {
         event.preventDefault();
+        this.props.dispatch(actions.togglePause());
         console.log('paused timer');
         isPaused = true;
     },
 
     resumeTimer: function(event) {
         event.preventDefault();
+        this.props.dispatch(actions.togglePause());
         console.log('resumed timer');
         isPaused = false;
     },
@@ -169,8 +171,7 @@ var Menu = React.createClass({
         return (
           <div className="controls">
           <input type="button" name="previous" value="Previous Image" onClick={this.previousImage} />&nbsp;
-          <input type="button" name="pause" value="Pause Timer" onClick={this.pauseTimer} />&nbsp;
-          <input type="button" name="resume" value="Resume Timer" onClick={this.resumeTimer} />&nbsp;
+          {this.props.pause == false ? <input type="button" name="pause" value="Pause Timer" onClick={this.pauseTimer} /> : <input type="button" name="resume" id="resume" value="Resume Timer" onClick={this.resumeTimer} />}&nbsp;
           <input type="button" name="next" value="Next Image" onClick={this.nextImage} />&nbsp;
           <input type="button" name="end" value="End Session" onClick={this.endSession} />
           </div>
@@ -192,7 +193,8 @@ var Menu = React.createClass({
 var mapStateToProps = function(state) {
     return {
       sessionOn: state.sessionOn,
-      imgUrl: state.imgUrl
+      imgUrl: state.imgUrl,
+      pause: state.pause
     };
 };
 

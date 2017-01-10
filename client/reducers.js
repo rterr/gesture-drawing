@@ -4,7 +4,8 @@ var initialState = {
   sessionOn: false,
   category: null,
   timer: null,
-  imgUrl: null
+  imgUrl: null,
+  pause: false
 }
 
 //sessionImages = array of IDs of images to be used in the session
@@ -71,7 +72,8 @@ var reducer = function(state, action){
     }
   }
   else if (action.type == actions.TOGGLE_PAUSE) {
-    return state;
+    console.log("toggle_pause action")
+    state = Object.assign({}, state, {pause: !state.pause});
   }
 
   return state;
