@@ -12,6 +12,6 @@ Photographs of models or animals would be ideal for use in this app; public doma
 
 ## Components
 - display.js = where the images appear
-- menu.js = has two "modes" (not sure whether to separate into separate .js files)
+- menu.js = has two "modes"
   - the settings panel, where you choose your session options (only appears when the sessionOn is false)
-  - the controls panel, which has Next/Previous/Pause/Stop buttons (only appears when sessionOn is true)
+  - the controls panel, which has Next/Previous/Pause/End buttons (only appears when sessionOn is true)
